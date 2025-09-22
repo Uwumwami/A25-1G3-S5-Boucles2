@@ -31,15 +31,22 @@ if __name__ == "__main__":
     print(f"Solde initial:  {solde} $")
     print("*************************")
 
-    retrait_1 = float(input("Retrait 1: Combien voulez-vous retirer? "))
-    solde = retrait(solde, retrait_1)
+    while True:
+        try:
+            retrait_1 = float(input("Retrait: Combien voulez-vous retirer? "))
+            solde = retrait(solde, retrait_1)
+        except ValueError:
+            print("Veuillez entrer les valeurs valides.")
+        continuer = input("Voulez-vous faire un autre retrait (oui/non): ").strip().lower()
+        if continuer == "oui":
+            retrait_1 = float(input("Retrait 1: Combien voulez-vous retirer? "))
+        else:
+            break
+        print("*********************")
+        print(f"Solde initial: {MONTANT_INITIAL} $")
+        print(f"Retrait 1:     {retrait_1} $")
+        print(f"Solde final:   {solde} $")
+        print("*********************")
 
-    retrait_2 = float(input("Retrait 2: Combien voulez-vous retirer? "))
-    solde = retrait(solde, retrait_2)
 
-    print("*********************")
-    print(f"Solde initial: {MONTANT_INITIAL} $")
-    print(f"Retrait 1:     {retrait_1} $")
-    print(f"Retrait 2:     {retrait_2} $")
-    print(f"Solde final:   {solde} $")
-    print("*********************")
+
